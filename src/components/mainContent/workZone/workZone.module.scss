@@ -1,5 +1,5 @@
 .active {
-    margin-bottom: 4    0px;
+    margin-bottom: 40px;
     .title {
       color: rgb(22, 22, 22);
       margin-bottom: 16px;
@@ -12,8 +12,8 @@
       border-top: 1px solid rgb(218, 218, 218);
       padding-top: 28px;
       width: 100%;
-      justify-content: space-between;
-      gap: 25px 5px;
+   
+      gap:25px 40px;
       display: flex;
       flex-wrap: wrap;
       .item {
@@ -31,9 +31,44 @@
           width: 100%;
           height: 100%;
           background-color: black;
-          /* opacity: 0.22; */
           mix-blend-mode: color;
-        
+        }
+        .btn{
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            right: 24px;
+            top: 26px;
+            background: url(./../../../img/3points.svg) no-repeat top;
+            display: block;
+            .popup{
+                display: flex;
+                display: none;
+                margin-left:-130px;
+                margin-top: 25px;
+                flex-direction: column;
+                overflow: hidden;
+                text-align: left;
+                color: rgb(22, 22, 22);
+                font-family: Manrope;
+                position: relative;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 22px;
+                letter-spacing: 0%;
+                border-radius: 12px;
+                box-shadow: 0px 0px 2px 0px rgb(90, 90, 90);
+                background: rgb(253, 253, 253);
+                z-index: 200;
+              p{
+                display: block;
+                font-size: clamp(14px,16px,16px);
+                padding: 12px 12px 12px 12px;
+                &:hover{
+                    background-color: rgb(223, 220, 220);
+                }
+              }
+            }
         }
         .img {
           height: 120px;
@@ -49,10 +84,12 @@
           .tag {
             .title {
               color: rgb(34, 160, 188);
-              font-size: 20px;
+              font-size:  20px;
               font-weight: 600;
               line-height: 130%;
               margin-bottom: 7px;
+              text-wrap: wrap;
+              max-width: min-content;
             }
             p {
               color: rgb(89, 89, 89);

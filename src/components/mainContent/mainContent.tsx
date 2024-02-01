@@ -8,19 +8,22 @@ import WorkZone from "./workZone/workZone";
 const MainContent = () => {
     
   const dispatch =useDispatch<AppDispatch>()
-  const users= useSelector((state:RootState)=>state.users.users)
+  const usersActive= useSelector((state:RootState)=>state.users.usersActive)
+  const usersArchive= useSelector((state:RootState)=>state.users.usersArchive)
     useEffect( () => {
     dispatch(fetchUsers())
     },[])
 
+    // const popupActive=['Редактировать', 'Архивировать' , 'Скрыть']
+
+    // const popupArchive=['Активировать']
 
   return (
     <div className={style.mainContent} >
       <div className="container">
         <div className={style.body}>  
-        
-          <WorkZone users={users} type={false} title="Активные"/>
-          <WorkZone  users={users} type={true} title="Архив"/>
+          <WorkZone users={usersActive} type={false} title="Активные" />
+          <WorkZone  users={usersArchive} type={true} title="Архив"  />
         </div>
       </div>
     </div>

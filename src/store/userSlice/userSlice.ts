@@ -4,7 +4,9 @@ import axios from 'axios'
 
 
 export interface Iuser {
-    users:RootInterface[]
+    users:RootInterface[];
+    usersActive:RootInterface[];
+    usersArchive:RootInterface[];
 }
 
 
@@ -38,30 +40,12 @@ export interface Geo {
     lng: string;
 }
 
-const initialState: Iuser = {users:
-[{
-    "id": 0,
-    "name": "Leanne Graham",
-    "username": "Bret",
-    "email": "Sincere@april.biz",
-    "address": {
-        "street": "Kulas Light",
-        "suite": "Apt. 556",
-        "city": "Gwenborough",
-        "zipcode": "92998-3874",
-        "geo": {
-            "lat": "-37.3159",
-            "lng": "81.1496"
-        }
-    },
-    "phone": "1-770-736-8031 x56442",
-    "website": "hildegard.org",
-    "company": {
-        "name": "Romaguera-Crona",
-        "catchPhrase": "Multi-layered client-server neural-net",
-        "bs": "harness real-time e-markets"
-    }
-}]}
+const initialState: Iuser = {
+    users:[],
+    usersActive:[],
+    usersArchive:[]
+}
+
 
 export const fetchUsers = createAsyncThunk(
     'users/fetch',
@@ -75,11 +59,25 @@ export const fetchUsers = createAsyncThunk(
 export const userSlice = createSlice({
     name: 'users',
     initialState,
-    reducers: {},
+    reducers: {
+        activedUser: (state,{payload}) => {
+            state.usersActive.push(payload)
+            console.log(payload);
+            state.usersArchive=state.usersArchive.filter((item)=>item.id !==payload.id)
+          },
+        archiveUser: (state,{payload}) => {
+            console.log(payload);
+            
+            state.usersArchive.push(payload)            
+            state.usersActive=state.usersActive.filter((item)=>item.id !==payload.id)
+          }, 
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchUsers.fulfilled, (state, { payload }) => {
             console.log(payload, "----------------")
-            state.users = payload.data;
+            state.users= payload.data;
+            state.usersActive = state.users.filter(item=>item.id>5)
+            state.usersArchive = state.users.filter(item=>item.id<=5)
         })
         // builder.addCase(fetchUsers.rejected, (state, action) => {
         //     if (action.payload) {
@@ -94,6 +92,6 @@ export const userSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-//  export const {  } = userSlice.actions
+  export const {activedUser , archiveUser } = userSlice.actions
 
 export default userSlice.reducer
