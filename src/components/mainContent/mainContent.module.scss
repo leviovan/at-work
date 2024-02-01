@@ -6,61 +6,6 @@
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 40px;
-    .active {
-      .title {
-        color: rgb(22, 22, 22);
-        margin-bottom: 16px;
-        
-        font-size: 24px;
-        font-weight: 600;
-        line-height: 33px;
-      }
-      .content {
-        border-top: 1px solid rgb(218, 218, 218);
-        padding-top: 28px;
-        .item {
-          background-color: white;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 24px;
-          width: 360px;
-          height: 170px;
-          border-radius: 16px;
-          .img {
-            height: 120px;
-            width: 112px;
-          }
-          .desc {
-            width: 180px;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            .tag {
-              .title {
-                color: rgb(34, 160, 188);
-                font-size: 20px;
-                font-weight: 600;
-                line-height: 130%;
-                margin-bottom: 7px;
-              }
-              p {
-                color: rgb(89, 89, 89);
-                font-family: Manrope;
-                font-size: 16px;
-              }
-            }
-            p {
-              color: rgb(156, 156, 156);
-              font-family: Manrope;
-              font-size: 14px;
-              font-weight: 500;
-              line-height: 19px;
-            }
-          }
-        }
-      }
-    }
+    
   }
 }

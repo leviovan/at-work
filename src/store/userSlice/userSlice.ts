@@ -2,6 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 // import type { PayloadAction } from '@reduxjs/toolkit'
 
+
+export interface Iuser {
+    users:RootInterface[]
+}
+
+
 export interface RootInterface {
     id: number;
     name: string;
@@ -32,7 +38,8 @@ export interface Geo {
     lng: string;
 }
 
-const initialState: RootInterface = {
+const initialState: Iuser = {users:
+[{
     "id": 0,
     "name": "Leanne Graham",
     "username": "Bret",
@@ -54,41 +61,39 @@ const initialState: RootInterface = {
         "catchPhrase": "Multi-layered client-server neural-net",
         "bs": "harness real-time e-markets"
     }
-}
+}]}
 
 export const fetchUsers = createAsyncThunk(
     'users/fetch',
-    // Declare the type your function argument here:
+
     async () => {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/users`)
-        // Inferred return type: Promise<MyData>
-        return (await response)
+        const  data  = await axios.get(`https://jsonplaceholder.typicode.com/users`)
+        return await (data)
     },
 )
 
 export const userSlice = createSlice({
     name: 'users',
     initialState,
-    reducers: {
-
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchUsers.fulfilled, (state, { payload }) => {
-            console.log('ok', payload);
+            console.log(payload, "----------------")
+            state.users = payload.data;
         })
-        builder.addCase(fetchUsers.rejected, (state, action) => {
-            if (action.payload) {
-                // Since we passed in `MyKnownError` to `rejectValue` in `updateUser`, the type information will be available here.
-                console.log(action);
+        // builder.addCase(fetchUsers.rejected, (state, action) => {
+        //     if (action.payload) {
+        //         // Since we passed in `MyKnownError` to `rejectValue` in `updateUser`, the type information will be available here.
+        //         console.log(action);
 
-            } else {
-                console.log(action);
-            }
-        })
+        //     } else {
+        //         console.log(action);
+        //     }
+        // })
     }
 })
 
 // Action creators are generated for each case reducer function
-// export const {  } = userSlice.actions
+//  export const {  } = userSlice.actions
 
 export default userSlice.reducer
