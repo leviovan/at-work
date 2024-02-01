@@ -1,9 +1,13 @@
 .header{
     font-family: 'Inter', sans-serif;
     height: 56px;
+    background-color: white;
+
 }
 
 .body{
+    padding-left: 30px;
+    padding-right: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,17 +22,13 @@
     justify-content: space-between;
     color: rgb(51, 49, 83);
     font-size: 24px;
-  
     line-height: 100%;
-
     text-align: left;
-
     &::before{
         content: url(./../../img/logo-sign.svg);
             width: 24px;
             height: 24px;
     }
-
 }
 .registre{
     display: flex;

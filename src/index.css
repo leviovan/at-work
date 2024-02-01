@@ -1,12 +1,14 @@
 :root {
   box-sizing: border-box;
 }
-@import "~normalize.css/normalize.css";
+body {
+  background-color: #f4f4f4;
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding-left: 30px;
+  // padding-left: 30px;
   width: 100%;
   height: 100%;
-  padding-right: 30px;
+  // padding-right: 30px;
 }

@@ -355,3 +355,139 @@ div {
   margin: 0;
   padding: 0;
 }
+////////////////////reset
+/// *::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margin and padding */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+/* Set font-size to 16px and font-family to sans-serif */
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove border outline for form elements */
+button,
+input,
+select,
+textarea {
+  outline: none;
+  border: none;
+}
+
+/* Remove default hyperlink styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove default table border */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove default button styles */
+button {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Remove default input styles */
+input {
+  border: none;
+  background-color: transparent;
+}
+
+/* Set default max width */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* removr default style */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
