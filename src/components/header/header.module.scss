@@ -2,9 +2,7 @@
     font-family: 'Inter', sans-serif;
     height: 56px;
     background-color: white;
-
-}
-
+}   
 .body{
     padding-left: 30px;
     padding-right: 30px;
@@ -13,6 +11,11 @@
     align-items: center;
     height: 100%;
     width: 100%;
+    @media (max-width:425px) {
+        padding-left: 10px;
+        padding-right: 10px;
+      
+    }
 }
 .icon{
     max-width: 125px;
@@ -37,10 +40,10 @@
     width: 162px;
     height: 100%;
     padding-right: 5px;
-    span{display: block;
-
+    span{
+        display: block;
      height: 24px
-     ;
+
     };
     .accaunt{
         display: flex;

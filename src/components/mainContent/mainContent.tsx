@@ -1,23 +1,21 @@
-import {  fetchUsers } from "../../store/userSlice/userSlice";
 import style from "./mainContent.module.scss";
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch, RootState } from "../../store/store";
+import {  useDispatch, useSelector } from 'react-redux'
+import {  AppDispatch, RootState } from "../../store/store";
 import WorkZone from "./workZone/workZone";
+import { useEffect } from "react";
+import { fetchUsers } from "../../store/userSlice/userSlice";
 
 const MainContent = () => {
-    
+
+
   const dispatch =useDispatch<AppDispatch>()
+
+  useEffect( () => {
+  dispatch(fetchUsers())
+  },[])
+
   const usersActive= useSelector((state:RootState)=>state.users.usersActive)
   const usersArchive= useSelector((state:RootState)=>state.users.usersArchive)
-    useEffect( () => {
-    dispatch(fetchUsers())
-    },[])
-
-    // const popupActive=['Редактировать', 'Архивировать' , 'Скрыть']
-
-    // const popupArchive=['Активировать']
-
   return (
     <div className={style.mainContent} >
       <div className="container">

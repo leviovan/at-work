@@ -5,20 +5,21 @@ import axios from 'axios'
 
 export interface Iuser {
     users:RootInterface[];
+    currentUser:RootInterface;
     usersActive:RootInterface[];
     usersArchive:RootInterface[];
 }
 
 
 export interface RootInterface {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-    address: Address;
-    phone: string;
-    website: string;
-    company: Company;
+    id?: number;
+    name?: string;
+    username?: string;
+    email?: string;
+    address?: Address;
+    phone?: string;
+    website?: string;
+    company?: Company;
 }
 
 export interface Company {
@@ -42,6 +43,7 @@ export interface Geo {
 
 const initialState: Iuser = {
     users:[],
+    currentUser:{},
     usersActive:[],
     usersArchive:[]
 }
@@ -52,10 +54,16 @@ export const fetchUsers = createAsyncThunk(
 
     async () => {
         const  data  = await axios.get(`https://jsonplaceholder.typicode.com/users`)
-        return await (data)
+        return  (data)
     },
 )
-
+export const fetchUserbyId = createAsyncThunk(
+    'users/fetchById',
+    async (id:number) => {
+        const  data  = await axios.get(`https://jsonplaceholder.typicode.com/users?id=${id}`)
+        return (data)
+    },
+)
 export const userSlice = createSlice({
     name: 'users',
     initialState,
@@ -74,10 +82,16 @@ export const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchUsers.fulfilled, (state, { payload }) => {
-            console.log(payload, "----------------")
             state.users= payload.data;
-            state.usersActive = state.users.filter(item=>item.id>5)
-            state.usersArchive = state.users.filter(item=>item.id<=5)
+            state.usersActive = state.users.filter((user:RootInterface)=>user.id>5)
+            state.usersArchive = state.users.filter((user:RootInterface)=>user.id<=5)
+        }),
+        builder.addCase(fetchUserbyId.fulfilled, (state, { payload }) => {
+            console.log(payload,"current");
+            
+            state.currentUser = payload.data
+            console.log(payload.data);
+            
         })
         // builder.addCase(fetchUsers.rejected, (state, action) => {
         //     if (action.payload) {
